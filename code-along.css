@@ -7,22 +7,27 @@
   width: 20%;
   margin: auto;
   display: inline-block;
+  transform: translate(150px);
+  opacity: 0.5; /* text is still there. this proves it. if i add another 15px in y axis next to other 150 inside parentheses it will move down bcs its the y axis.*/
 }
 
+/* play around in developer tools under styles to experiment. */
 /****************************************
 * Transition
 ****************************************/
 
 .transition-demo img {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   width: 200px;
   height: 200px;
   filter: grayscale(100%);
-
+  transition: 2s;
 }
 
 .transition-demo img:hover {
-
+  filter: none;
+  transform: scale(1.25) rotate(360deg);
+  border-radius: 50%;
 }
 
 /****************************************
@@ -35,11 +40,37 @@
   width: 500px;
   margin: auto;
   background-color: palegreen;
-
+  animation-name: sale-bar;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  /* filll mode is so it doesnt refresh and loop animation*/
+  animation-delay: 5s;
+  /*delay mode- starts the animation after that time */
+  animation-iteration-count: infinite;
 }
 
 @keyframes sale-bar {
-  0% { background-color: lightgreen; width: 450px }
-  75% { background-color: #FF033E; width: 125x }
-  100% { background-color: crimson; width: 10px }
+  0% {
+    background-color: lightgreen;
+    width: 450px;
+  }
+  25% {
+    backgorund-color: gold;
+    width: 375px;
+  }
+  50% {
+    background-color: salmon;
+    width: 250px;
+  }
+  75% {
+    background-color: #ff033e;
+    width: 125x;
+  }
+  100% {
+    background-color: crimson;
+    width: 10px;
+    border-radius: 100%;
+    transform: scale(0);
+  }
 }
+/* is only triggered when its at 75% */
